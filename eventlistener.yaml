@@ -1,0 +1,12 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: code-engine-event-listener
+spec:
+  serviceAccountName: tekton-triggers-sa
+  triggers:
+    - name: github-listener
+      bindings:
+        - ref: github-push-binding
+      template:
+        ref: code-engine-template
