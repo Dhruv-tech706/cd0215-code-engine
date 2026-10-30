@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: build-clone-repo
+spec:
+  workspaces:
+    - name: output
+  steps:
+    - name: clone
+      image: alpine/git
+      script: |
+        git clone https://github.com/Dhruv-tech706/cd0215-code-engine.git $(workspaces.output.path)
