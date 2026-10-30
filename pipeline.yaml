@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: build-clone-pipeline
+spec:
+  workspaces:
+    - name: pipeline-workspace
+  tasks:
+    - name: fetch-repo
+      taskRef:
+        name: build-clone-repo
+      workspaces:
+        - name: output
+          workspace: pipeline-workspace
